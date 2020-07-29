@@ -29,7 +29,7 @@ else:
 listed = set(sorted(df_listed.ts_code.unique()))
 delisted = set(sorted(df_delisted.ts_code.unique()))
 
-token = 'b3a30846b8061441ece4ee397c62304c212337ddade4c89db61bf236'
+token = 'XXXXXXXXXXXXXXXXXXXXXXXXXX'
 pro = ts.pro_api(token)
 
 def download(ticker, output):
