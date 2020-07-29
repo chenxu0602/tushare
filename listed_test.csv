@@ -1,0 +1,20 @@
+ts_code,name,fullname,enname,cn_spell,market,list_status,list_date,delist_date,trade_unit,isin,curr_type
+00001.HK,长和,长江和记实业有限公司,CK Hutchison Holdings Ltd.,CH,主板,L,19721101,,500.0,KYG217651051,HKD
+00002.HK,中电控股,中电控股有限公司,CLP Holdings Limited,ZDKG,主板,L,19210101,,500.0,HK0002007356,HKD
+00003.HK,香港中华煤气,香港中华煤气有限公司,Hong Kong And China Gas Company Limited,XGZHMQ,主板,L,19600411,,1000.0,HK0003000038,HKD
+00004.HK,九龙仓集团,九龙仓集团有限公司,The Wharf (Holdings) Limited,JLCJT,主板,L,19210101,,1000.0,HK0004000045,HKD
+00005.HK,汇丰控股,汇丰控股有限公司,HSBC Holdings plc,HFKG,主板,L,19210101,,400.0,GB0005405286,HKD
+00006.HK,电能实业,电能实业有限公司,Power Assets Holdings Limited,DNSY,主板,L,19760816,,500.0,HK0006000050,HKD
+00007.HK,香港金融集团,香港金融投资控股集团有限公司,Hong Kong Finance Investment Holding Group Limited,XGJRJT,主板,L,20000908,,2000.0,BMG4643R1088,HKD
+00008.HK,电讯盈科,电讯盈科有限公司,PCCW Limited,DXYK,主板,L,19941018,,1000.0,HK0008011667,HKD
+00009.HK,九号运通,九号运通有限公司,Nine Express Limited,JHYT,主板,L,20010912,,6000.0,BMG6547Y1057,HKD
+00010.HK,恒隆集团,恒隆集团有限公司,Hang Lung Group Ltd.,HLJT,主板,L,19721012,,1000.0,HK0010000088,HKD
+00011.HK,恒生银行,恒生银行有限公司,Hang Seng Bank Limited,HSYH,主板,L,19720620,,100.0,HK0011000095,HKD
+00012.HK,恒基地产,恒基兆业地产有限公司,Henderson Land Development Company Limited,HJDC,主板,L,19810723,,1000.0,HK0012000102,HKD
+00014.HK,希慎兴业,希慎兴业有限公司,Hysan Development Company Limited,XSXY,主板,L,19810918,,1000.0,HK0014000126,HKD
+00015.HK,盈信控股,盈信控股有限公司,Vantage International (Holdings) Limited,YXKG,主板,L,20000908,,2000.0,BMG932121434,HKD
+00016.HK,新鸿基地产,新鸿基地产发展有限公司,Sun Hung Kai Properties Limited,XHJDC,主板,L,19720908,,500.0,HK0016000132,HKD
+00017.HK,新世界发展,新世界发展有限公司,New World Development Company Limited,XSJFZ,主板,L,19721123,,1000.0,HK0017000149,HKD
+00018.HK,东方报业集团,东方报业集团有限公司,Oriental Press Group Ltd,DFBYJT,主板,L,19870818,,2000.0,HK0018000155,HKD
+00019.HK,太古股份公司A,太古股份有限公司A,Swire Pacific Limited A,TGGFGSA,主板,L,19590414,,500.0,HK0019000162,HKD
+00020.HK,会德丰,会德丰有限公司,Wheelock And Company Limited,HDF,主板,L,19830103,,1000.0,HK0020000177,HKD
