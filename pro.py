@@ -4,8 +4,9 @@ from pathlib import Path
 import concurrent.futures
 import os, sys
 import time
+from datetime import date, datetime
 
-output_dir = Path("hk_stocks")
+output_dir = Path("hk_stocks_{}".format(date.today().strftime("%Y-%m-%d")))
 if not output_dir.exists():
     print(f"Output dir {output_dir} doesn't exist, creating one ...")
     os.makedirs(output_dir)
@@ -29,7 +30,7 @@ else:
 listed = set(sorted(df_listed.ts_code.unique()))
 delisted = set(sorted(df_delisted.ts_code.unique()))
 
-token = 'XXXXXXXXXXXXXXXXXXXXXXXXXX'
+token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx'
 pro = ts.pro_api(token)
 
 def download(ticker, output):

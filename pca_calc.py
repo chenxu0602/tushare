@@ -9,8 +9,8 @@ import numpy as np
 
 input_dir = Path("hk_stocks_smoothed")
 
-start = datetime.strptime("2014-01-01", "%Y-%m-%d")
-end = datetime.strptime("2018-12-31", "%Y-%m-%d")
+start = datetime.strptime("2019-01-01", "%Y-%m-%d")
+end = datetime.strptime("2020-08-07", "%Y-%m-%d")
 
 frames = []
 

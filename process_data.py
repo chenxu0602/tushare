@@ -5,7 +5,7 @@ import os, sys
 import matplotlib.pyplot as plt
 
 
-input_dir = Path("hk_stocks")
+input_dir = Path("hk_stocks_2020-08-07")
 
 frames = []
 
