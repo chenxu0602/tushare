@@ -9,8 +9,8 @@ import numpy as np
 
 input_dir = Path("hk_stocks_smoothed")
 
-start = datetime.strptime("2017-01-01", "%Y-%m-%d")
-end = datetime.strptime("2020-01-01", "%Y-%m-%d")
+train_start = datetime.strptime("2017-01-01", "%Y-%m-%d")
+train_end = datetime.strptime("2020-01-01", "%Y-%m-%d")
 
 frames = []
 
@@ -44,7 +44,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
 
 smoothed = {}
 
-def process(df):
+def process(df, start, end):
     if df.index.min() <= start and df.index.max() >= end:
         code = df.ts_code.unique()[0]
         s = df.loc[(df.index >= start) & (df.index <= end), "smoothed_close"]
@@ -53,7 +53,8 @@ def process(df):
 with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
     future_to_url = {}
     for i in range(len(frames)):
-        future_to_url[executor.submit(process, frames[i])] = i
+        future_to_url[executor.submit(
+          process, frames[i], train_start, train_end)] = i
 
     for future in concurrent.futures.as_completed(future_to_url):
         url = future_to_url[future]
@@ -80,4 +81,32 @@ X = df.values
 X = scaler.fit_transform(X)
 
 pca = PCA(n_components=0.75)
-y = pca.fit_transform(X)
+pca.fit(X)
+
+
+def load_history(ticker, start, end):
+    df = load_data(input_dir / ticker)
+    s = df.loc[(df.index >= start) & (df.index <= end), "smoothed_close"]
+    long_smoothed[ticker] = s
+
+long_smoothed = {}
+with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+    future_to_url = {}
+    for tk in df.columns:
+        future_to_url[executor.submit(
+          load_history, tk, "2012-01-01", train_end)] = i
+
+    for future in concurrent.futures.as_completed(future_to_url):
+        url = future_to_url[future]
+        try:
+            data = future.result()
+        except Exception as exc:
+            print(f"{url} generated an exception: {exc}")
+
+df2 = pd.DataFrame(long_smoothed)
+df2.fillna(method="ffill", inplace=True)
+df2 = np.log(df2).diff().fillna(0)
+
+y = pca.transform(df2.values)
+
+
