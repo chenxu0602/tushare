@@ -9,8 +9,8 @@ import numpy as np
 
 input_dir = Path("hk_stocks_smoothed")
 
-train_start = datetime.strptime("2017-01-01", "%Y-%m-%d")
-train_end = datetime.strptime("2020-01-01", "%Y-%m-%d")
+train_start = datetime.strptime("2016-01-01", "%Y-%m-%d")
+train_end = datetime.strptime("2018-01-01", "%Y-%m-%d")
 
 frames = []
 
@@ -83,6 +83,8 @@ X = scaler.fit_transform(X)
 pca = PCA(n_components=0.75)
 pca.fit(X)
 
+y = pca.transform(X)
+df_train = pd.DataFrame(data=y, index=df.index, columns=[f"f{i+1}" for i in range(y.shape[1])]) 
 
 def load_history(ticker, start, end):
     df = load_data(input_dir / ticker)
@@ -103,10 +105,13 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
         except Exception as exc:
             print(f"{url} generated an exception: {exc}")
 
-df2 = pd.DataFrame(long_smoothed)
-df2.fillna(method="ffill", inplace=True)
-df2 = np.log(df2).diff().fillna(0)
+df_long = pd.DataFrame(long_smoothed)
+df_long.fillna(method="ffill", inplace=True)
+df_long = np.log(df_long).diff().fillna(0)
 
-y = pca.transform(df2.values)
+y_predict = pca.transform(scaler.transform(df_long.values))
+df_predict = pd.DataFrame(data=y_predict, index=df_long.index, columns=[f"f{i+1}" for i in range(y_predict.shape[1])]) 
+df_predict.index.name = "date"
 
-
+output = Path("pca_factors.csv")
+df_predict.round(4).to_csv(output, index=True)
