@@ -11,6 +11,24 @@ if not output_dir.exists():
     print(f"Output dir {output_dir} doesn't exist, creating one ...")
     os.makedirs(output_dir)
 
+token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+pro = ts.pro_api(token)
+
+try:
+    pro.hk_basic().to_csv("listed.csv", index=False)
+except Exception as e:
+    print("Couldn't get listed!")
+else:
+    print("Get listed!")
+
+try:
+    pro.hk_basic(list_status='D').to_csv("delisted.csv", index=False)
+except Exception as e:
+    print("Couldn't get delisted!")
+else:
+    print("Get delisted!")
+
+
 try:
     df_listed = pd.read_csv("listed.csv")
 except Exception as e:
@@ -29,9 +47,6 @@ else:
 
 listed = set(sorted(df_listed.ts_code.unique()))
 delisted = set(sorted(df_delisted.ts_code.unique()))
-
-token = 'XXXXXXXXXXXXXXXXXXXX'
-pro = ts.pro_api(token)
 
 def download(ticker, output):
     print(f"Downloading {ticker} ...")
